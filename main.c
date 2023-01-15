@@ -103,14 +103,24 @@ void md5() {
     printf("end %d", (end - start));
 }
 
+//类型重命名
+typedef _Bool bool;
+
 /*bool测试*/
 void boolTest() {
-    if (1) {
+    bool true = 1;
+    bool false = 0;
+    bool flag = 0;
+    if (true) {
         printf("This is true\n");
     }
-    if (!0) {
+    if (!false) {
         printf("This is false\n");
     }
+
+    printf("flag is %d\n", flag);
+    flag = 1;
+    printf("flag is %d\n", flag);
 }
 
 int main() {
