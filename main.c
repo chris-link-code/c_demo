@@ -105,22 +105,24 @@ void md5() {
 
 //类型重命名
 typedef _Bool bool;
+#define true 1;
+#define  false 0;
 
 /*bool测试*/
 void boolTest() {
-    bool true = 1;
-    bool false = 0;
-    bool flag = 0;
-    if (true) {
+    bool bool_a = true;
+    bool bool_b = false;
+    bool bool_c = false;
+    if (bool_a) {
         printf("This is true\n");
     }
-    if (!false) {
+    if (!bool_b) {
         printf("This is false\n");
     }
 
-    printf("flag is %d\n", flag);
-    flag = 1;
-    printf("flag is %d\n", flag);
+    printf("bool_c is %d\n", bool_c);
+    bool_c = 1;
+    printf("bool_c is %d\n", bool_c);
 }
 
 int main() {
