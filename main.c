@@ -125,11 +125,38 @@ void boolTest() {
     printf("bool_c is %d\n", bool_c);
 }
 
+typedef wchar_t WCHAR;
+
+/*
+ * 测试字符串
+ *
+ * https://learn.microsoft.com/zh-cn/windows/win32/learnwin32/working-with-strings
+ * 下面是一些其他与字符串相关的 typedefs，你将看到：
+ * Typedef	定义
+ * CHAR	char
+ * PSTR 或 LPSTR	char*
+ * PCSTR 或 LPCSTR	const char*
+ * PWSTR 或 LPWSTR	wchar_t*
+ * PCWSTR 或 LPCWSTR	const wchar_t*
+ *
+ * https://www.runoob.com/cprogramming/c-function-printf.html
+ *
+ * TEXT("x") 或 _T("x")	L"x"	"x"
+ */
+void stringTest() {
+    wchar_t a = L'a';
+    wchar_t *str = L"hello";
+    printf("%s\n", &a);
+    //TODO 有bug
+    printf("%s\n", str);
+}
+
 int main() {
     //macro();
     //md5();
     //pointerPrint();
-    boolTest();
+    //boolTest();
+    stringTest();
 
     //system("pause");
     return 0;
