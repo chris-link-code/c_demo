@@ -151,12 +151,34 @@ void stringTest() {
     printf("%s\n", str);
 }
 
-int main() {
+/**
+ * argc: 参数的数量
+ * argv: 参数的值
+ */
+int main(int argc, char *argv[]) {
+    printf("main\n");
+    printf("argc: %d\n", argc);
+
+    if (argv != NULL) {
+        // 获得数组长度
+        // 但是，因为argv是以指针的方式传递的
+        // 所以该方法计算得到的argv的长度是指针的长度，也就是1
+        int size = sizeof(*argv) / sizeof(argv[0]);
+        printf("argv: %d\n", size);
+        if (size > 0) {
+            for (int i = 0; i < argc; ++i) {
+                printf("argv[%d]: %s\n", i, argv[i]);
+            }
+        }
+    } else {
+        printf("argv is null");
+    }
+
     //macro();
     //md5();
     //pointerPrint();
     //boolTest();
-    stringTest();
+    //stringTest();
 
     //system("pause");
     return 0;
