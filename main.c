@@ -144,11 +144,26 @@ typedef wchar_t WCHAR;
  * TEXT("x") 或 _T("x")	L"x"	"x"
  */
 void stringTest() {
-    wchar_t a = L'a';
+    char buf[1024] = {0};
+
+    //https://www.codersrc.com/archives/10406.html
+    sprintf(buf, "www.codersrc.com\n");
+    printf("%s", buf);
+
+    sprintf(buf, "www.codersrc.com age:%d\n", 17);
+    printf("%s", buf);
+
+    sprintf(buf, "www.codersrc.com age:%d name:%s\n", 17, "zhangsan");
+    printf("%s", buf);
+
+    sprintf(buf, "www.codersrc.com age:%d name:%s height:%f\n", 17, "zhangsan", 1.75);
+    printf("%s", buf);
+
+    /*wchar_t a = L'a';
     wchar_t *str = L"hello";
     printf("%s\n", &a);
     //TODO 有bug
-    printf("%s\n", str);
+    printf("%s\n", str);*/
 }
 
 /**
@@ -163,6 +178,7 @@ int main(int argc, char *argv[]) {
         // 获得数组长度
         // 但是，因为argv是以指针的方式传递的
         // 所以该方法计算得到的argv的长度是指针的长度，也就是1
+        // 根本原因: sizeof只是编译期指令，只能判断“原始”数组的大小
         int size = sizeof(*argv) / sizeof(argv[0]);
         printf("argv: %d\n", size);
         if (size > 0) {
@@ -178,7 +194,7 @@ int main(int argc, char *argv[]) {
     //md5();
     //pointerPrint();
     //boolTest();
-    //stringTest();
+    stringTest();
 
     //system("pause");
     return 0;
