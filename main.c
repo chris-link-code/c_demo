@@ -166,6 +166,10 @@ void stringTest() {
     printf("%s\n", str);*/
 }
 
+
+// TODO c语言回调函数
+// https://blog.csdn.net/weixin_44127729/article/details/126415977
+
 /**
  * argc: 参数的数量
  * argv: 参数的值
