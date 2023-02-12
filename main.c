@@ -166,6 +166,10 @@ void stringTest() {
     printf("%s\n", str);*/
 }
 
+
+// TODO sizeof
+// TODO typeof
+
 //C语言实现泛型
 //typeof关键字是GCC特有
 //https://www.bilibili.com/video/BV1zT411R7fN/
