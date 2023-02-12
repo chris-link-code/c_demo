@@ -166,34 +166,6 @@ void stringTest() {
     printf("%s\n", str);*/
 }
 
-
-// TODO sizeof
-// TODO typeof
-
-//C语言实现泛型
-//typeof关键字是GCC特有
-//https://www.bilibili.com/video/BV1zT411R7fN/
-//交换两个未定义类型的变量的值
-#define swap(a, b) ({typeof(a) temp = a;a = b;b = temp;})
-#define sum(a, b) (a + b)
-
-void swap_value() {
-    int one = 1;
-    int two = 2;
-    char c = 'c';
-    char d = 'd';
-
-    swap(one, two);
-    swap(c, d);
-
-    printf("one: %d\n", one);
-    printf("two: %d\n", two);
-    printf("c: %c\n", c);
-    printf("d: %c\n", d);
-
-    printf("sum: %d\n", sum(one, two));
-}
-
 /*
  * GCC有很多好用的扩展
  * 比如：
@@ -226,6 +198,33 @@ static void before() {
 static void after(void) {
     printf("after main\n");
 }
+
+//C语言实现泛型
+//typeof关键字是GCC特有
+//https://www.bilibili.com/video/BV1zT411R7fN/
+//交换两个未定义类型的变量的值
+#define swap(a, b) ({typeof(a) temp = a;a = b;b = temp;})
+#define sum(a, b) (a + b)
+
+void swap_value() {
+    int one = 1;
+    int two = 2;
+    char c = 'c';
+    char d = 'd';
+
+    swap(one, two);
+    swap(c, d);
+
+    printf("one: %d\n", one);
+    printf("two: %d\n", two);
+    printf("c: %c\n", c);
+    printf("d: %c\n", d);
+
+    printf("sum: %d\n", sum(one, two));
+}
+
+// TODO sizeof
+// TODO typeof
 
 // TODO c语言回调函数
 // https://blog.csdn.net/weixin_44127729/article/details/126415977
