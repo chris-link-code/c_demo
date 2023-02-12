@@ -166,6 +166,62 @@ void stringTest() {
     printf("%s\n", str);*/
 }
 
+//C语言实现泛型
+//typeof关键字是GCC特有
+//https://www.bilibili.com/video/BV1zT411R7fN/
+//交换两个未定义类型的变量的值
+#define swap(a, b)({ \
+    //直接获取变量类型\
+    typeof(*a) temp = *a;\
+    *a = *b;\
+    *b = *temp;\
+})
+
+void swap_value() {
+    int a = 1;
+    int b = 2;
+    char c = 'c';
+    char d = 'd';
+//    swap(a,b);
+//    swap(c,d);
+    printf("a: %d\n", a);
+    printf("b: %d\n", b);
+    printf("c: %c\n", c);
+    printf("d: %c\n", d);
+}
+
+/*
+ * GCC有很多好用的扩展
+ * 比如：
+ * int __builtin_types_compatible_p(type_a, type_b);
+ * 用来判断两个类型是否相同，如果type_a与 type_b相同的话，就会返回1，否则的话，返回0
+ * https://blog.csdn.net/akakakak250/article/details/64129401
+ */
+void compare_type() {
+    int a = 3;
+    int b = 9;
+    char c = 'v';
+    char d = 's';
+    printf("a and b have same type: %d\n", __builtin_types_compatible_p(typeof(a), typeof(b)));
+    printf("a and c have same type: %d\n", __builtin_types_compatible_p(typeof(a), typeof(c)));
+    printf("c and d have same type: %d\n", __builtin_types_compatible_p(typeof(c), typeof(d)));
+}
+
+/* __attribute__((constructor)) 先于main()函数调用
+ * __attribute__((destructor)) 在main()函数后调用
+ * https://blog.csdn.net/accumla/article/details/96161462
+ */
+static void before(void) __attribute__((constructor));
+
+static void after(void) __attribute__((destructor));
+
+static void before() {
+    printf("before main\n");
+}
+
+static void after(void) {
+    printf("after main\n");
+}
 
 // TODO c语言回调函数
 // https://blog.csdn.net/weixin_44127729/article/details/126415977
@@ -175,7 +231,7 @@ void stringTest() {
  * argv: 参数的值
  */
 int main(int argc, char *argv[]) {
-    printf("main\n");
+    /*printf("main\n");
     printf("argc: %d\n", argc);
 
     if (argv != NULL) {
@@ -192,13 +248,15 @@ int main(int argc, char *argv[]) {
         }
     } else {
         printf("argv is null");
-    }
+    }*/
 
     //macro();
     //md5();
     //pointerPrint();
     //boolTest();
-    stringTest();
+    //stringTest();
+    //compare_type();
+    swap_value();
 
     //system("pause");
     return 0;
