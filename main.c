@@ -211,14 +211,21 @@ void swap_value() {
     int two = 2;
     char c = 'c';
     char d = 'd';
+    char left[] = "left";
+    char right[] = "right";
 
     swap(one, two);
     swap(c, d);
+    // TODO 无法交换字符数组，需要进一步解决
+    swap(*left, *right);
 
     printf("one: %d\n", one);
     printf("two: %d\n", two);
     printf("c: %c\n", c);
     printf("d: %c\n", d);
+
+    printf("left: %s\n", left);
+    printf("right: %s\n", right);
 
     printf("sum: %d\n", sum(one, two));
 }
