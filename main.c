@@ -170,24 +170,24 @@ void stringTest() {
 //typeof关键字是GCC特有
 //https://www.bilibili.com/video/BV1zT411R7fN/
 //交换两个未定义类型的变量的值
-#define swap(a, b)({ \
-    //直接获取变量类型\
-    typeof(*a) temp = *a;\
-    *a = *b;\
-    *b = *temp;\
-})
+#define swap(a, b) ({typeof(a) temp = a;a = b;b = temp;})
+#define sum(a, b) (a + b)
 
 void swap_value() {
-    int a = 1;
-    int b = 2;
+    int one = 1;
+    int two = 2;
     char c = 'c';
     char d = 'd';
-//    swap(a,b);
-//    swap(c,d);
-    printf("a: %d\n", a);
-    printf("b: %d\n", b);
+
+    swap(one, two);
+    swap(c, d);
+
+    printf("one: %d\n", one);
+    printf("two: %d\n", two);
     printf("c: %c\n", c);
     printf("d: %c\n", d);
+
+    printf("sum: %d\n", sum(one, two));
 }
 
 /*
