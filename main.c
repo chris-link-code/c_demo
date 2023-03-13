@@ -146,6 +146,9 @@ typedef wchar_t WCHAR;
 void stringTest() {
     char buf[1024] = {0};
 
+    char *c = "forest";
+    printf("c: %s\n", c);
+
     //https://www.codersrc.com/archives/10406.html
     sprintf(buf, "www.codersrc.com\n");
     printf("%s", buf);
@@ -264,9 +267,9 @@ int main(int argc, char *argv[]) {
     //md5();
     //pointerPrint();
     //boolTest();
-    //stringTest();
+    stringTest();
     //compare_type();
-    swap_value();
+    //swap_value();
 
     //system("pause");
     return 0;
