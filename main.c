@@ -146,8 +146,18 @@ typedef wchar_t WCHAR;
 void stringTest() {
     char buf[1024] = {0};
 
+    /*https://www.bilibili.com/video/BV1nM411a7Qe/*/
     char *c = "forest";
     printf("c: %s\n", c);
+
+    /*https://www.runoob.com/cprogramming/c-strings.html*/
+    char sites[7] = {'R', 'U', 'N', 'O', 'O', 'B', '\0'};
+    char site[] = "RUNOOB\0";
+    char s[] = "RUNOOB";
+    printf("菜鸟教程: %s\n", sites);
+    printf("菜鸟教程: %s\n", site);
+    printf("菜鸟教程: %s\n", s);
+
 
     //https://www.codersrc.com/archives/10406.html
     sprintf(buf, "www.codersrc.com\n");
