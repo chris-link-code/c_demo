@@ -243,6 +243,18 @@ void swap_value() {
     printf("sum: %d\n", sum(one, two));
 }
 
+// ´òÓ¡³ö i
+// https://www.bilibili.com/video/BV1jh41177RH/
+void double_pointer() {
+    char *a[] = {"abc", "def", "hij"};
+    char **p = a;
+    printf("%c\n", *(char *) (a[2] + 1));
+    printf("%c\n", *(a[2] + 1));
+    printf("%c\n", a[2][1]);
+    printf("%c\n", p[2][1]);
+    printf("%c\n", *(*(p + 2) + 1));
+}
+
 // TODO sizeof
 // TODO typeof
 
@@ -277,9 +289,10 @@ int main(int argc, char *argv[]) {
     //md5();
     //pointerPrint();
     //boolTest();
-    stringTest();
+    //stringTest();
     //compare_type();
     //swap_value();
+    double_pointer();
 
     //system("pause");
     return 0;
