@@ -196,7 +196,8 @@ void compare_type() {
     printf("c and d have same type: %d\n", __builtin_types_compatible_p(typeof(c), typeof(d)));
 }
 
-/* __attribute__((constructor)) 先于main()函数调用
+/*
+ * __attribute__((constructor)) 先于main()函数调用
  * __attribute__((destructor)) 在main()函数后调用
  * https://blog.csdn.net/accumla/article/details/96161462
  */
@@ -310,7 +311,15 @@ int main(int argc, char *argv[]) {
     //swap_value();
     //double_pointer();
 
-    // 回调函数
+    /*
+     * 回调函数
+     *
+     * 上面定义了一个 handle_event 函数，它接受两个参数：一个事件类型和一个函数指针。
+     * 如果函数指针不为空，则会调用指定的函数。
+     * 分别调用 handle_event 函数来触发两个事件，
+     * 其中第一个事件注册了一个回调函数 callback_function，
+     * 第二个事件没有注册回调函数
+     */
     handle_event(1, callback_function);
     handle_event(2, NULL);
 
