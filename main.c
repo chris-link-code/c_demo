@@ -260,6 +260,22 @@ void double_pointer() {
 
 // TODO c语言回调函数
 // https://blog.csdn.net/weixin_44127729/article/details/126415977
+// https://mp.weixin.qq.com/s/hf50GKlu6HYwKf3OfITmWA
+
+/*
+ * 回调函数是指在某个事件发生时被调用的函数。通常，回调函数是在某个库函数或框架函数中注册的，
+ * 当某个条件满足时，库函数或框架函数会调用回调函数来执行相应的操作
+ */
+void handle_event(int event_type, void (*callback)(void)) {
+    printf("event %d occurred\n", event_type);
+    if (callback) {
+        callback();
+    }
+}
+
+void callback_function() {
+    printf("callback function called\n");
+}
 
 /**
  * argc: 参数的数量
@@ -292,7 +308,11 @@ int main(int argc, char *argv[]) {
     //stringTest();
     //compare_type();
     //swap_value();
-    double_pointer();
+    //double_pointer();
+
+    // 回调函数
+    handle_event(1, callback_function);
+    handle_event(2, NULL);
 
     //system("pause");
     return 0;
