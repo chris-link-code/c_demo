@@ -1,4 +1,4 @@
-/*
+/**
  * https://mp.weixin.qq.com/s/hf50GKlu6HYwKf3OfITmWA
  * 排序算法
  *
@@ -23,7 +23,7 @@ int compare_reverse_int(const void *a, const void *b) {
     return (*(int *) b - *(int *) a);
 }
 
-/*
+/**
  * 定义了一个 sort 函数，它接受三个参数：一个整型数组、数组大小和一个比较函数指针。
  * 比较函数指针指向一个函数，该函数接受两个指向常量 void 类型的指针，并返回一个整型结果。
  * 在 sort 函数中，我们使用标准库函数 qsort 来对整型数组进行排序，其中比较函数指针由调用者传递。
