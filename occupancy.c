@@ -21,6 +21,12 @@ int main() {
     memset(p1, 0xFF, 1 << 30);
     sleep(30);
 
+    // TODO
+    // 打印占用的内存空间
+    // https://blog.csdn.net/qq_20386411/article/details/89072507
+    // https://blog.csdn.net/m0_61025131/article/details/119987809
+    // https://blog.csdn.net/qq_45656248/article/details/116395312
+
     printf("free\n");
     // 释放内存
     free(p1);
