@@ -302,6 +302,9 @@ int main(int argc, char *argv[]) {
         printf("argv is null");
     }*/
 
+    // 生成 m ~ n 的随机数
+    // int rand_number = rand() % (n - m + 1) + m;
+
     //macro();
     //md5();
     //pointerPrint();
