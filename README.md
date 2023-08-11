@@ -40,3 +40,5 @@ Android如何配置cmakelist.txt 配置编译动态库和静态库呢
 原文链接：https://blog.csdn.net/weixin_41477306/article/details/123617609
 
 
+## 日志
+知名的日志库有 [EasyLogger](https://github.com/armink/EasyLogger)，[zlog](https://github.com/HardySimpson/zlog)，[log4c](https://log4c.sourceforge.net/)
