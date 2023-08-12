@@ -284,6 +284,7 @@ void int_to_string() {
     int number1 = 123456;
     int number2 = -123456;
     char string[sizeof(int)] = {0};
+    //value: 要转换的整数，string: 转换后的字符串,radix: 转换进制数，如2,8,10,16 进制等。
     itoa(number1, string, 10);
     printf("数字：%d 转换后的字符串为：%s\n", number1, string);
     itoa(number2, string, 10);
