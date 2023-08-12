@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <sys/time.h>
 
@@ -278,6 +279,17 @@ void callback_function() {
     printf("callback function called\n");
 }
 
+
+void int_to_string() {
+    int number1 = 123456;
+    int number2 = -123456;
+    char string[sizeof(int)] = {0};
+    itoa(number1, string, 10);
+    printf("数字：%d 转换后的字符串为：%s\n", number1, string);
+    itoa(number2, string, 10);
+    printf("数字：%d 转换后的字符串为：%s\n", number2, string);
+}
+
 /**
  * argc: 参数的数量
  * argv: 参数的值
@@ -323,8 +335,10 @@ int main(int argc, char *argv[]) {
      * 其中第一个事件注册了一个回调函数 callback_function，
      * 第二个事件没有注册回调函数
      */
-    handle_event(1, callback_function);
-    handle_event(2, NULL);
+//    handle_event(1, callback_function);
+//    handle_event(2, NULL);
+
+    int_to_string();
 
     //system("pause");
     return 0;
