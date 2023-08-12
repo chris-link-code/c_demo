@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <time.h>
 #include <sys/time.h>
 
@@ -301,6 +302,17 @@ void number() {
     printf("1 << 32: %lld\n", one << 32);
 }
 
+void random() {
+    while (1) {
+        // 生成 m ~ n 的随机数
+        // int rand_number = rand() % (n - m + 1) + m;
+        int rand_number = rand() % 4 + 1;
+
+        printf("random 1 ~ 4: %d\n", rand_number);
+        sleep(1);
+    }
+}
+
 /**
  * argc: 参数的数量
  * argv: 参数的值
@@ -325,8 +337,7 @@ int main(int argc, char *argv[]) {
         printf("argv is null");
     }*/
 
-    // 生成 m ~ n 的随机数
-    // int rand_number = rand() % (n - m + 1) + m;
+
 
     //macro();
     //md5();
@@ -350,7 +361,8 @@ int main(int argc, char *argv[]) {
 //    handle_event(2, NULL);
 
 //    int_to_string();
-    number();
+//    number();
+    random();
 
     //system("pause");
     return 0;
