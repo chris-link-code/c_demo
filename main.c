@@ -296,6 +296,9 @@ void number() {
     printf("INT64_MAX: %d\n", INT64_MAX);
     printf("LONG_MAX: %ld\n", LONG_MAX);
     printf("LONG_LONG_MAX: %lld\n", LONG_LONG_MAX);
+
+    long long one = 1;
+    printf("1 << 32: %lld\n", one << 32);
 }
 
 /**
