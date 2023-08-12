@@ -291,6 +291,13 @@ void int_to_string() {
     printf("数字：%d 转换后的字符串为：%s\n", number2, string);
 }
 
+void number() {
+    printf("INT_MAX: %d\n", INT_MAX);
+    printf("INT64_MAX: %d\n", INT64_MAX);
+    printf("LONG_MAX: %ld\n", LONG_MAX);
+    printf("LONG_LONG_MAX: %lld\n", LONG_LONG_MAX);
+}
+
 /**
  * argc: 参数的数量
  * argv: 参数的值
@@ -339,7 +346,8 @@ int main(int argc, char *argv[]) {
 //    handle_event(1, callback_function);
 //    handle_event(2, NULL);
 
-    int_to_string();
+//    int_to_string();
+    number();
 
     //system("pause");
     return 0;
