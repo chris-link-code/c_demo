@@ -313,6 +313,12 @@ void random() {
     }
 }
 
+void length() {
+    char *s = "string test";
+    printf("strlen: %d\n", strlen(s));
+    printf("sizeof: %d\n", sizeof(s));
+}
+
 /**
  * argc: 参数的数量
  * argv: 参数的值
@@ -362,7 +368,9 @@ int main(int argc, char *argv[]) {
 
 //    int_to_string();
 //    number();
-    random();
+//    random();
+
+    length();
 
     //system("pause");
     return 0;
