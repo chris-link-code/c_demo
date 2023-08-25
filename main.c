@@ -319,6 +319,17 @@ void length() {
     printf("sizeof: %d\n", sizeof(s));
 }
 
+void address() {
+    char *p;
+    char arr[] = {'v', 'c', 'g'};
+    p = &arr;
+    printf("arr address:\t %p\n", arr);
+    printf("&arr address:\t %p\n", &arr);
+    printf("&arr[0] address: %p\n", &arr[0]);
+    printf("p address:\t %p\n", p);
+    printf("arr[0] :\t %c\n", arr[0]);
+}
+
 /**
  * argc: 参数的数量
  * argv: 参数的值
@@ -370,7 +381,8 @@ int main(int argc, char *argv[]) {
 //    number();
 //    random();
 
-    length();
+//    length();
+    address();
 
     //system("pause");
     return 0;
