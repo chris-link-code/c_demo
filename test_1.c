@@ -5,13 +5,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct USER User;
+
 struct USER {
     char *name;
     int age;
     int height;
     int health;
 };
-typedef struct USER User;
 
 void print_user(User *user) {
     printf("User name is %s, age is %d, height is %d, health is %d\n",
@@ -32,7 +33,7 @@ User create_user(char *name, int age, int height) {
     user.height = height;
     user.health = age * 2 + height * 3;
     // 调用该方法接收到的user不再是前面声明的user
-    // 因为这是栈空间，只在方法内有效，调用完成后，方法自动回收
+    // 因为这是栈空间，只在方法内有效，调用完成后自动回收
     // 实际返回时，会把这些变量复制到寄存器中，再从寄存器中把变量复制出来
     return user;
 }
