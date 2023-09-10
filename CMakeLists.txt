@@ -4,4 +4,7 @@ project(c_demo C)
 
 set(CMAKE_C_STANDARD 17)
 
-add_executable(c_demo main.c)
+add_executable(c_demo
+#        main.c
+        test_1.c
+)
