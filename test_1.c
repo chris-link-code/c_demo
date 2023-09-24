@@ -5,14 +5,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct USER User;
-
-struct USER {
+typedef struct USER {
     char *name;
     int age;
     int height;
     int health;
-};
+} User;
 
 void print_user(User *user) {
     printf("User name is %s, age is %d, height is %d, health is %d\n",
@@ -40,7 +38,6 @@ User create_user(char *name, int age, int height) {
 */
 
 User *create_user(char *name, int age, int height) {
-
     User *user = malloc(sizeof(User));
     user->name = name;
     user->age = age;
@@ -50,12 +47,11 @@ User *create_user(char *name, int age, int height) {
     return user;
 }
 
-int main(void) {
+void main() {
     User *u_1 = create_user("Frank", 12, 156);
     User *u_2 = create_user("Tom", 11, 160);
     User *u_3 = create_user("Jerry", 10, 161);
     print_user(u_1);
     print_user(u_2);
     print_user(u_3);
-    return 0;
 }
