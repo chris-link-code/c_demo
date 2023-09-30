@@ -56,7 +56,12 @@ int main() {
 //    printf("3\n");
 
     FILE *fp = fopen("D:\\temporary\\z.mp4", "r");
-    copy_to_memory(fp);
+    char *file_memory = copy_to_memory(fp);
+
+    // 在这里对文件进行操作
+
+    free(file_memory);
+    file_memory = NULL;
 
     //释放文件占用
     fclose(fp);
