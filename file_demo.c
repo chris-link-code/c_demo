@@ -55,8 +55,6 @@ int main() {
 //    printf("2\n");
 //    printf("3\n");
 
-    printf("%d", a + b);
-
     FILE *fp = fopen("D:\\temporary\\z.mp4", "r");
     copy_to_memory(fp);
 
