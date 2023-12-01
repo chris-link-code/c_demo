@@ -7,5 +7,7 @@ set(CMAKE_C_STANDARD 17)
 add_executable(c_demo
 #        main.c
 #        test_1.c
-        file_demo.c
+#        file_demo.c
+#        node.c
+        dynamic_array.c
 )
