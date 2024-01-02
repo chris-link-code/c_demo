@@ -330,6 +330,14 @@ void address() {
     printf("arr[0] :\t %c\n", arr[0]);
 }
 
+// 大端小端
+// https://www.bilibili.com/video/BV1dC4y1i7i2/
+void big_little() {
+    int number = 0x12345678;
+    char *p = &number;
+    printf("0x%x\n", p[0]);
+}
+
 /**
  * argc: 参数的数量
  * argv: 参数的值
@@ -382,7 +390,8 @@ int main(int argc, char *argv[]) {
 //    random();
 
 //    length();
-    address();
+//    address();
+    big_little();
 
     //system("pause");
     return 0;
