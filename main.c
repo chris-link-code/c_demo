@@ -286,23 +286,23 @@ void int_to_string() {
     int number2 = -123456;
     char string[sizeof(int)] = {0};
     //value: 要转换的整数，string: 转换后的字符串,radix: 转换进制数，如2,8,10,16 进制等。
-    itoa(number1, string, 10);
+//    itoa(number1, string, 10);
     printf("数字：%d 转换后的字符串为：%s\n", number1, string);
-    itoa(number2, string, 10);
+//    itoa(number2, string, 10);
     printf("数字：%d 转换后的字符串为：%s\n", number2, string);
 }
 
 void number() {
-    printf("INT_MAX: %d\n", INT_MAX);
-    printf("INT64_MAX: %d\n", INT64_MAX);
-    printf("LONG_MAX: %ld\n", LONG_MAX);
-    printf("LONG_LONG_MAX: %lld\n", LONG_LONG_MAX);
+//    printf("INT_MAX: %d\n", INT_MAX);
+//    printf("INT64_MAX: %d\n", INT64_MAX);
+//    printf("LONG_MAX: %ld\n", LONG_MAX);
+//    printf("LONG_LONG_MAX: %lld\n", LONG_LONG_MAX);
 
     long long one = 1;
     printf("1 << 32: %lld\n", one << 32);
 }
 
-void random() {
+void rand_number() {
     while (1) {
         // 生成 m ~ n 的随机数
         // int rand_number = rand() % (n - m + 1) + m;
@@ -387,7 +387,7 @@ int main(int argc, char *argv[]) {
 
 //    int_to_string();
 //    number();
-//    random();
+//    rand_number();
 
 //    length();
 //    address();
