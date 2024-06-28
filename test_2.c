@@ -6,11 +6,18 @@
 #include <stdlib.h>
 
 void swap(int x, int y);
+
 void swap_p(int *x, int *y);
+
+int *allocate_array(int size, int value);
+
+int *allocate_array_p(int size, int value);
+
+void allocate_array_pp(int *arr, int size, int value);
 
 void *p_3;
 
-void main() {
+int main() {
     int a = 5;
     int *p_1 = &a;
     // %p 显示十六进制，不输出0x
@@ -98,6 +105,22 @@ void main() {
     char *word = "hello world";
     printf("%s\n", word);
 
+    int b = 7;
+    int c = 8;
+    printf("b value is %d，address is %p\n", b, &b);
+    printf("c value is %d，address is %p\n", c, &c);
+    swap_p(&b, &c);
+    printf("b value is %d，address is %p\n", b, &b);
+    printf("c value is %d，address is %p\n", c, &c);
+
+    int d = 9;
+    int e = 10;
+    printf("d value is %d，address is %p\n", d, &d);
+    printf("e value is %d，address is %p\n", e, &e);
+    swap(d, e);
+    printf("d value is %d，address is %p\n", d, &d);
+    printf("e value is %d，address is %p\n", e, &e);
+
     /*
      * 内存泄漏
      * 1. 丢失内存地址，当指针又指向第二次分配的内存时，第一次分配的内存的地址就会丢失
@@ -121,21 +144,33 @@ void main() {
         p_5 = NULL;
     }
 
-    int b = 7;
-    int c = 8;
-    printf("b value is %d，address is %p\n", b, &b);
-    printf("c value is %d，address is %p\n", c, &c);
-    swap_p(&b, &c);
-    printf("b value is %d，address is %p\n", b, &b);
-    printf("c value is %d，address is %p\n", c, &c);
+    const int size = 5;
+    const int value = 6;
+    int *p_6 = allocate_array(size, value);
+    for (int i = 0; i < size; i++) {
+        printf("p_6 value is %d，address is %p\n", p_6[i], &p_6[i]);
+    }
 
-    int d = 9;
-    int e = 10;
-    printf("d value is %d，address is %p\n", d, &d);
-    printf("e value is %d，address is %p\n", e, &e);
-    swap(d, e);
-    printf("d value is %d，address is %p\n", d, &d);
-    printf("e value is %d，address is %p\n", e, &e);
+    int *p_7 = allocate_array_p(size, value);
+    for (int i = 0; i < size; i++) {
+        printf("p_7 value is %d，address is %p\n", p_7[i], &p_7[i]);
+    }
+    if (p_7) {
+        free(p_7);
+        p_7 = NULL;
+    }
+
+    int *p_8 = NULL;
+    allocate_array_pp(&p_8, size, value);
+    for (int i = 0; i < size; i++) {
+        printf("p_8 value is %d，address is %p\n", p_8, &p_8);
+    }
+    if (p_8) {
+        free(p_8);
+        p_8 = NULL;
+    }
+
+    return 0;
 }
 
 // 通过值传递，交换失败
@@ -151,4 +186,44 @@ void swap_p(int *x, int *y) {
     int temp = *x;
     *x = *y;
     *y = temp;
+}
+
+// 把指针当数组用
+/*
+ * 尽管可以正确工作，但从函数返回指针时可能存在几个潜在的问题，包括:
+ * • 返回未初始化的指针
+ * • 返回指向无效地址的指针
+ * • 返回局部变量的指针
+ * • 返回指针但是没有释放内存
+ */
+int *allocate_array_p(int size, int value) {
+    int *arr = (int *) malloc(size * sizeof(int));
+    for (int i = 0; i < size; i++) {
+        arr[i] = value;
+    }
+    return arr;
+}
+
+/*
+ * 局部数据指针
+ * 如果你不理解程序栈如何工作，就很容易犯返回指向局部数据的指针的错误
+ * 一旦函数返回，返回的数组地址也就无效了，因函数的栈帧从栈中弹出了
+ * 尽管每个数组元素仍然可能包含value，但如果调用另一个函数，就可能覆写这些值
+ * 以这种方式创建并初始化数组是绝对不可取的
+*/
+int *allocate_array(int size, int value) {
+    int arr[size];
+    for (int i = 0; i < size; i++) {
+        arr[i] = value;
+    }
+    return arr;
+}
+
+void allocate_array_pp(int *arr, int size, int value) {
+    arr = (int *) malloc(size * sizeof(int));
+    if (arr) {
+        for (int i = 0; i < size; i++) {
+            arr[i] = value;
+        }
+    }
 }
