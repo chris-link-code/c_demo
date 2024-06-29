@@ -34,7 +34,10 @@ void circle_draw(shape_t *shape) {
 
 void rectangle_draw(shape_t *shape) {
     rectangle_t *rectangle = (rectangle_t *) shape;
-    printf("Drawing a rectangle at (%d, %d) with width %d and height %d.\n", rectangle->x, rectangle->y, rectangle->w,
+    printf("Drawing a rectangle at (%d, %d) with width %d and height %d.\n",
+           rectangle->x,
+           rectangle->y,
+           rectangle->w,
            rectangle->h);
 }
 

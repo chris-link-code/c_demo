@@ -8,14 +8,14 @@
 
 #include <stdio.h>
 
-void process_array(int *array, size_t size, int (*process)(int)) {
+void process_array(int *array, size_t size, void (*process)(int *)) {
     for (size_t i = 0; i < size; i++) {
-        array[i] = process(array[i]);
+        process(&array[i]);
     }
 }
 
-int increment(int n) {
-    return n + 1;
+void increment(int *n) {
+    *n += 1;
 }
 
 /**

@@ -152,19 +152,22 @@ int main() {
     }
 
     int *p_7 = allocate_array_p(size, value);
-    for (int i = 0; i < size; i++) {
-        printf("p_7 value is %d，address is %p\n", p_7[i], &p_7[i]);
-    }
     if (p_7) {
+        for (int i = 0; i < size; i++) {
+            printf("p_7 value is %d，address is %p\n", p_7[i], &p_7[i]);
+        }
         free(p_7);
         p_7 = NULL;
     }
 
+    /*
+     * 运行后程序打印0，因为将p_8传递给函数时，它的值被复制到了参数arr中，修改arr对p_8没有影响
+     * 当函数返回后，没有将存储在arr中的值复制到p_8中
+     * 另外，还发生了内存泄漏，无法再访问allocate_array_pp函数中arr地址指向的内存块了
+     */
     int *p_8 = NULL;
     allocate_array_pp(&p_8, size, value);
-    for (int i = 0; i < size; i++) {
-        printf("p_8 value is %d，address is %p\n", p_8, &p_8);
-    }
+    printf("p_8 value is %d，address is %p\n", p_8, &p_8);
     if (p_8) {
         free(p_8);
         p_8 = NULL;
@@ -197,6 +200,7 @@ void swap_p(int *x, int *y) {
  * • 返回指针但是没有释放内存
  */
 int *allocate_array_p(int size, int value) {
+    if (size < 1) return NULL;
     int *arr = (int *) malloc(size * sizeof(int));
     for (int i = 0; i < size; i++) {
         arr[i] = value;
@@ -209,7 +213,7 @@ int *allocate_array_p(int size, int value) {
  * 如果你不理解程序栈如何工作，就很容易犯返回指向局部数据的指针的错误
  * 一旦函数返回，返回的数组地址也就无效了，因函数的栈帧从栈中弹出了
  * 尽管每个数组元素仍然可能包含value，但如果调用另一个函数，就可能覆写这些值
- * 以这种方式创建并初始化数组是绝对不可取的
+ * 以这种方式创建并初始化数组是绝对不可取的！！！
 */
 int *allocate_array(int size, int value) {
     int arr[size];
@@ -221,6 +225,7 @@ int *allocate_array(int size, int value) {
 
 void allocate_array_pp(int *arr, int size, int value) {
     arr = (int *) malloc(size * sizeof(int));
+    printf("arr value is %d，address is %p\n", *arr, arr);
     if (arr) {
         for (int i = 0; i < size; i++) {
             arr[i] = value;
