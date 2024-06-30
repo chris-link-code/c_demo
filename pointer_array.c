@@ -5,8 +5,6 @@
  * 函数指针数组是指一个数组，其中的每个元素都是一个函数指针。
  * 这种数组可以用于实现一个分派表，根据输入参数的不同，动态地调用不同的函数。
  */
-
-
 #include <stdio.h>
 
 void add(int a, int b) {
@@ -47,5 +45,19 @@ int main() {
     for (size_t i = 0; i < num_operations; i++) {
         operations[i](a, b);
     }
+
+    int arr[] = {1, 2, 3, 4, 5};
+    int *p = arr;
+    // 这三个是等价的
+    printf("%p\n", p);
+    printf("%p\n", p[0]);
+    printf("%p\n", arr);
+    printf("%p\n", &arr[0]);
+
+    // 这三个是等价的
+    printf("arr[1] value is %d，address is %p\n", arr[1], &arr[1]);
+    printf("p[1] value is %d，address is %p\n", p[1], &p[1]);
+    printf("(p + 1) value is %d，address is %p\n", *(p + 1), p + 1);
+
     return 0;
 }
