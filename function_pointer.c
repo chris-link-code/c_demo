@@ -22,10 +22,6 @@ int square(int num) {
     return num * num;
 }
 
-int max(int x, int y) {
-    return (x > y ? x : y);
-}
-
 int main() {
     /**
      * 定义了一个 process_array 函数
@@ -51,15 +47,10 @@ int main() {
     p = square;
     int n = 5;
     // 使用函数指针调用函数
+    // p(n) 和 (*p)(n) 这两种调用方法都可以
+    // 推荐使用p(n)方式直接使用函数指针变量调用函数
+    // 因为它避免了编译器的隐式转换，使得代码更加直接和高效
     printf("%d squared is %d\n", n, p(n));
-
-
-    // 定义一个函数指针
-    int (*ptr)(int, int);
-    int a = 3, b = 5, c;
-    ptr = max;
-    c = (*ptr)(a, b);
-    printf("a=%d, b=%d, max=%d", a, b, c);
 
     return 0;
 }
