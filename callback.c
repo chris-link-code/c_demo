@@ -50,6 +50,10 @@ void callback_fun() {
     printf("callback function called\n");
 }
 
+void callback_func() {
+    printf("another callback function called\n");
+}
+
 /**
  * 在上面的代码中，我们定义了一个函数 permute，用于计算给定数组的排列。
  * 在 permute 函数中，我们使用递归来生成所有可能的排列，
@@ -77,8 +81,9 @@ int main() {
      * 其中第一个事件注册了一个回调函数 callback_function，
      * 第二个事件没有注册回调函数
      */
+    handle_event(0, NULL);
     handle_event(1, callback_fun);
-    handle_event(2, NULL);
+    handle_event(2, callback_func);
 
     return 0;
 }
