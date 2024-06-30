@@ -144,7 +144,7 @@ int main() {
         p_5 = NULL;
     }
 
-    const int size = 5;
+    const int size = 3;
     const int value = 6;
     int *p_6 = allocate_array(size, value);
     for (int i = 0; i < size; i++) {
@@ -166,7 +166,7 @@ int main() {
      * 另外，还发生了内存泄漏，无法再访问allocate_array_pp函数中arr地址指向的内存块了
      */
     int *p_8 = NULL;
-    allocate_array_pp(&p_8, size, value);
+    allocate_array_pp(p_8, size, value);
     printf("p_8 value is %d，address is %p\n", p_8, &p_8);
     if (p_8) {
         free(p_8);
