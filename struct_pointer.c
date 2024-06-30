@@ -13,14 +13,21 @@ typedef struct USER {
 } User;
 
 void print_user(User *user) {
-    printf("User name is %s, age is %d, height is %d, health is %d\n",
-           user->name,
-           user->age,
-           user->height,
-           user->health);
-    // 手动申请的空间必须释放，否则会造成内存泄漏
-    free(user);
-    user = NULL;
+    if (user) {
+        printf("User name is %s, age is %d, height is %d, health is %d\n",
+               user->name,
+               user->age,
+               user->height,
+               user->health);
+    }
+}
+
+// 必须手动释放申请的空间，否则会造成内存泄漏
+void safe_free(void *p) {
+    if (p) {
+        free(p);
+        p = NULL;
+    }
 }
 
 /*
@@ -47,11 +54,18 @@ User *create_user(char *name, int age, int height) {
     return user;
 }
 
-void main() {
+int main() {
     User *u_1 = create_user("Frank", 12, 156);
     User *u_2 = create_user("Tom", 11, 160);
     User *u_3 = create_user("Jerry", 10, 161);
+
     print_user(u_1);
     print_user(u_2);
     print_user(u_3);
+
+    safe_free(u_1);
+    safe_free(u_2);
+    safe_free(u_3);
+
+    return 0;
 }
