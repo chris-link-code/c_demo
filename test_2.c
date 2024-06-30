@@ -15,6 +15,8 @@ int *allocate_array_p(int size, int value);
 
 void allocate_array_pp(int *arr, int size, int value);
 
+int square(int num);
+
 void *p_3;
 
 int main() {
@@ -173,6 +175,14 @@ int main() {
         p_8 = NULL;
     }
 
+    // 函数指针的用法
+    // 将square函数的地址赋值给p_9
+    int (*p_9)(int);
+    p_9 = square;
+    int n = 5;
+    // 使用函数指针调用函数
+    printf("%d squared is %d\n", n, p_9(n));
+
     return 0;
 }
 
@@ -231,4 +241,8 @@ void allocate_array_pp(int *arr, int size, int value) {
             arr[i] = value;
         }
     }
+}
+
+int square(int num) {
+    return num * num;
 }
