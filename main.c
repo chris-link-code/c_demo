@@ -342,7 +342,21 @@ int main(int argc, char *argv[]) {
         printf("argv is null");
     }*/
 
+    // goto语句是一种无条件转移语句，它允许程序跳转到代码的任何位置
+    // goto会严重降低代码的可读性，因此能不用就不用
+    // 通常建议使用结构化的控制流语句（如if-else、、while等）来替代goto
+    // 尽管如此，goto语句在某些特定情况下仍然是非常有用的
+    // 例如用于终止程序在某些深度嵌套的结构中的处理过程，break只能跳出单层循环
+    // 或者用于出错时清除资源等
+    goto clear;
 
+    clear:
+    {
+        printf("clear all resources\n");
+        printf("exit\n");
+        // 退出程序
+        exit(0);
+    }
 
     //macro();
     //md5();
