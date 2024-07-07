@@ -41,10 +41,14 @@ int main() {
     printf("\n");
 
     // 函数指针的用法
-    // 定义一个函数指针p
-    int (*p)(int);
+    // 声明一个函数指针p
+    // int (*p)(int);
     // 将square函数的地址赋值给p
-    p = square;
+    // p = square;
+    // 也可以声明并同时赋值
+    int (*p)(int) = square;
+    // 函数名前的&写不写都行
+    // int (*p)(int) = &square;
     int n = 5;
     // 使用函数指针调用函数
     // p(n) 和 (*p)(n) 这两种调用方法都可以
