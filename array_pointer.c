@@ -27,6 +27,12 @@ void divide(int a, int b) {
     }
 }
 
+void arr_arg(char arr[]) {
+    // 当数组作为参数时，编译器会把它当作指针
+    // 此处arr不再是数组，而是指针
+    printf("%lu, sizeof arr\n", sizeof(arr));
+}
+
 typedef void (*operation_func_t)(int, int);
 
 /**
@@ -79,6 +85,16 @@ int main() {
     // p_2 + 1，地址会增加20个字节
     printf("address is %p, value is %d，p_1 + 1\n", p_1 + 1, *(p_1 + 1));
     printf("address is %p, value is %d，p_2 + 1\n", p_2 + 1, *(p_2 + 1));
+
+    // https://www.bilibili.com/video/BV1Tz421i7xZ/
+    // 很多时候，数组和指针可以互相表示
+    // 但在使用sizeof时要严格区分数组和指针
+    // 指针和数组类型完全不一样
+    char arr_1[] = "hello";
+    char *p_3 = "hello";
+    printf("%lu, sizeof arr_1\n", sizeof(arr_1));
+    printf("%lu, sizeof p_3\n", sizeof(p_3));
+    arr_arg(arr_1);
 
     return 0;
 }
