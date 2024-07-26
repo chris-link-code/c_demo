@@ -67,5 +67,26 @@ int main() {
     safe_free(u_2);
     safe_free(u_3);
 
+    printf("--------------------------------------------------\n");
+
+    // 初始化结构体
+    // 指定字段初始化
+    User u_4 = {.name = "Lily", .age = 19, .height = 169, .health = 517};
+    print_user(&u_4);
+
+    // 按顺序初始化
+    User u_5 = {"Jack", 16, 186, .health = 523};
+    print_user(&u_5);
+
+    // 使用calloc初始化，所有字段被初始化为0
+    User *u_6 = (User *) calloc(1, sizeof(User));
+    print_user(u_6);
+    safe_free(u_6);
+
+    printf("--------------------------------------------------\n");
+
+    printf("%lu, sizeof u_5\n", sizeof(u_5));
+    printf("%lu, sizeof u_6\n", sizeof(u_6));
+
     return 0;
 }
